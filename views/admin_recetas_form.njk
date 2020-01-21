@@ -1,0 +1,70 @@
+{% extends "admin_base.njk" %}
+{% block titulo %}
+{% if receta.id %}
+    Editar receta
+{% else %}
+    Añadir receta
+{% endif %}
+{% endblock %}
+{% block contenido %}
+    {% if receta.id %}
+        <h1>Editar receta</h1>
+        <form action="/recetas/{{ receta.id }}" method="post">
+        <input type="hidden" name="_method" value="put"/>    
+    {% else %}
+        <h1>Nueva receta</h1>
+        <form action="/recetas" method="post" enctype="multipart/form-data">
+    {% endif %}
+            <div class="form-group">
+                <label for="titulo">Título:</label><input type="text" class="form-control" name="titulo" placeholder="Título de la receta..." value="{{ receta.titulo}}"/>
+            </div>
+            <div class="form-group">
+                <label for="comensales">Comensales:</label><input type="number" class="form-control" name="comensales" placeholder="Comensales de la receta..." value="{{ receta.comensales}}"/>
+            </div>
+            <div class="form-group">
+                <label for="preparacion">Preparación:</label><input type="number" class="form-control" name="preparacion" placeholder="Minutos de preparación..." value="{{ receta.preparacion}}"/>
+            </div>
+            <div class="form-group">
+                <label for="coccion">Cocción:</label><input type="number" class="form-control" name="coccion" placeholder="Tiempo de cocción..." value="{{ receta.coccion}}"/>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label><input type="text" class="form-control" name="descripcion" placeholder="Descripción de la receta..." value="{{ receta.descripcion}}"/>
+            </div>
+            {% if not receta.id %}
+                <div class="form-group">
+                    <label for="imagen">Imagen:</label><input type="file" class="form-control" name="imagen" placeholder="Elige una imagen..." value="{{ receta.imagen}}"/>
+                </div>
+            {% endif %}
+            <div class="form-row">
+            <h4 class="col-12">Sólo se admiten 3 elementos</h4>
+            <div class="form-group col-4">
+                <label for="ingrediente1">Ingrediente:</label><input type="text" class="form-control" name="ingrediente1" placeholder="Escribe el ingrediente..." {% if receta.id %} value= {{ receta.elementos[0].ingrediente }} {% endif %}>
+            </div>
+            <div class="form-group col-4">
+                <label for="cantidad1">Cantidad:</label><input type="number" class="form-control" name="cantidad1" placeholder="Cantidad del ingrediente..." {% if receta.id %} value= {{ receta.elementos[0].cantidad }} {% endif %}>
+            </div>
+            <div class="form-group col-4">
+                <label for="unidad1">Unidad:</label><input type="text" class="form-control" name="unidad1" placeholder="Unidad del ingrediente..." {% if receta.id %} value= {{ receta.elementos[0].unidad }} {% endif %}>
+            </div>
+            <div class="form-group col-4">
+                <label for="ingrediente2">Ingrediente:</label><input type="text" class="form-control" name="ingrediente2" placeholder="Escribe el ingrediente..." {% if receta.id %} value= {{ receta.elementos[1].ingrediente }} {% endif %}>
+            </div>
+            <div class="form-group col-4">
+                <label for="cantidad2">Cantidad:</label><input type="number" class="form-control" name="cantidad2" placeholder="Cantidad del ingrediente..." {% if receta.id %} value= {{ receta.elementos[1].cantidad }} {% endif %}>
+            </div>
+            <div class="form-group col-4">
+                <label for="unidad2">Unidad:</label><input type="text" class="form-control" name="unidad2" placeholder="Unidad del ingrediente..." {% if receta.id %} value= {{ receta.elementos[1].unidad }} {% endif %}>
+            </div>
+            <div class="form-group col-4">
+                <label for="ingrediente3">Ingrediente:</label><input type="text" class="form-control" name="ingrediente3" placeholder="Escribe el ingrediente..." {% if receta.id %} value= {{ receta.elementos[2].ingrediente }} {% endif %}>
+            </div>
+            <div class="form-group col-4">
+                <label for="cantidad3">Cantidad:</label><input type="number" class="form-control" name="cantidad3" placeholder="Cantidad del ingrediente..." {% if receta.id %} value= {{ receta.elementos[2].cantidad }} {% endif %}>
+            </div>
+            <div class="form-group col-4">
+                <label for="unidad3">Unidad:</label><input type="text" class="form-control" name="unidad3" placeholder="Unidad del ingrediente..." {% if receta.id %} value= {{ receta.elementos[2].unidad }} {% endif %}>
+            </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+{% endblock %}

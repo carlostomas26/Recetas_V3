@@ -1,0 +1,22 @@
+{% extends "publico_base.njk" %}
+{% block titulo %}Login{% endblock %}
+{% block contenido %}
+    <h1>Login</h1>
+
+    {% if mensaje %}
+    <div style="color:red">
+        {{ mensaje }}
+    </div>
+    {% endif %}
+    <form action="/auth/login" method="post">
+        <div class="form-group">
+            <label for="login">Login:</label>
+            <input type="text" class="form-control" name="login"/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" name="password"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+{% endblock %}

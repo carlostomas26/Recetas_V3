@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+                {% block titulo %}Búsqueda de recetas{% endblock %}
+        </title>
+        <link rel="stylesheet"href="/css/bootstrap.min.css"/>
+        <link rel="stylesheet"href="/public/css/estilos.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <div class="alert alert-secondary">
+                <a href="/" class="btn btn-dark">
+                    Inicio
+                </a>
+                <a href="/recetas" class="btn btn-dark">
+                    Administración
+                </a>
+            </div>
+            {% block contenido %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

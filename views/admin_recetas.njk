@@ -1,0 +1,30 @@
+{% extends "admin_base.njk" %}
+
+{% block titulo %}Recetas | Listado{% endblock %}
+
+{% block contenido %}
+
+    <h1>Listado de recetas</h1>
+
+    <table>
+        {% for receta in recetas %}
+            <tr>
+                <td class="col-8">{{ receta.titulo }}</td>
+                <td>
+                    <form action="/recetas/{{ receta.id }}" method="post">
+                        <input type="hidden" name="_method" value="delete"/>
+                            <button type="submit" class="btn btn-danger">Borrar</button>
+                    </form>
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="/recetas/editar/{{ receta.id }}">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td>{{ error }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

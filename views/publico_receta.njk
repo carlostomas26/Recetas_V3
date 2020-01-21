@@ -1,0 +1,35 @@
+{% extends "publico_base.njk" %}
+{% block titulo %}Recetas | Ficha{% endblock %}
+{% block contenido %}
+    <h1>Ficha de receta</h1>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="/public/uploads/{{ receta.imagen }}" class="card-img">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Título:</strong> {{ receta.titulo }}</h5>
+                    <p class="card-text"><strong>Comensales:</strong> {{ receta.comensales }}</p>
+                    <p class="card-text"><strong>Preparación:</strong> {{ receta.preparacion }}</p>
+                    <p class="card-text"><strong>Cocción:</strong> {{ receta.coccion }}</p>
+                    <p class="card-text"><strong>Descripción:</strong> {{ receta.descripcion }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-group col-4">
+    {% for elemento in receta.elementos %}
+    {% if elemento.ingrediente %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Elementos</h5>
+                <p class="card-text"><small class="text-muted"><strong>Ingrediente:</strong> {{ elemento.ingrediente }}</small></p>
+                <p class="card-text"><small class="text-muted"><strong>Cantidad:</strong> {{ elemento.cantidad }}</small></p>
+                <p class="card-text"><small class="text-muted"><strong>Unidad:</strong> {{ elemento.unidad }}</small></p>
+            </div>
+        </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}
