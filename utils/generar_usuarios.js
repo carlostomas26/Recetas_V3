@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Usuario = require(__dirname + '/../models/usuario');
 var AES = require("crypto-js/aes");
 
-mongoose.connect('mongodb://localhost:27017/recetasV3');
+mongoose.connect('mongodb://localhost:27020/recetasV3');
 
 Usuario.collection.drop();
 
