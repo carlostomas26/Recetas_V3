@@ -26,11 +26,11 @@ router.get('/', autenticacion, (req, res) => {
     }) 
 });
 
-router.get('/nueva', autenticacion, (req, res) => {    
+router.get('/recetas/nueva', autenticacion, (req, res) => {    
     res.render('admin_recetas_form');
 });
 
-router.get('/editar/:id', autenticacion, (req, res) => {
+router.get('/recetas/editar/:id', autenticacion, (req, res) => {
     Receta.findById(req.params['id']).then(resultado => {
         if (resultado)
             res.render('admin_recetas_form', {receta: resultado});
@@ -42,7 +42,7 @@ router.get('/editar/:id', autenticacion, (req, res) => {
 });
 
 // Servicio de inserción 
-router.post('/', upload.single('imagen'), autenticacion, (req, res) => { 
+router.post('/recetas', upload.single('imagen'), autenticacion, (req, res) => { 
 
     let elemento1 = null;
     let elemento2 = null; 
@@ -87,7 +87,7 @@ router.post('/', upload.single('imagen'), autenticacion, (req, res) => {
 });
 
 // Servicio para modificar recetas 
-router.put('/:id', upload.single('imagen'), autenticacion, (req, res) => {    
+router.put('/recetas/:id', upload.single('imagen'), autenticacion, (req, res) => {    
     Receta.findByIdAndUpdate(req.params['id'], 
     {$set: {
         titulo: req.body.titulo,
@@ -117,7 +117,7 @@ router.put('/:id', upload.single('imagen'), autenticacion, (req, res) => {
 });
 
 // Servicio de borrado
-router.delete('/:id', autenticacion, (req, res) => {    
+router.delete('/recetas/:id', autenticacion, (req, res) => {    
     Receta.findByIdAndRemove(req.params.id)
     .then(resultado => {
         res.redirect(req.baseUrl);  

@@ -50,7 +50,7 @@ app.use(methodOverride(function (req, res) {
     } 
 }));
 app.use('/auth', auth);
-app.use('/recetas', recetas); 
+app.use('/admin', recetas); 
 app.use('/', publico);
 
 // Puesta en marcha del servidor

@@ -11,13 +11,13 @@
             <tr>
                 <td class="col-8">{{ receta.titulo }}</td>
                 <td>
-                    <form action="/recetas/{{ receta.id }}" method="post">
+                    <form action="/admin/recetas/{{ receta.id }}" method="post">
                         <input type="hidden" name="_method" value="delete"/>
                             <button type="submit" class="btn btn-danger">Borrar</button>
                     </form>
                 </td>
                 <td>
-                    <a class="btn btn-primary" href="/recetas/editar/{{ receta.id }}">Editar</a>
+                    <a class="btn btn-primary" href="/admin/recetas/editar/{{ receta.id }}">Editar</a>
                 </td>
             </tr>
         {% else %}
