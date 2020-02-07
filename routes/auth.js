@@ -23,7 +23,7 @@ router.post('/login', (req, res) => {
 
         if (existeUsuario.length > 0) {
             req.session.usuario = existeUsuario[0].login;
-            res.redirect('/');
+            res.redirect('/admin');
         } else {
             res.render('auth_login',
                 { mensaje: "Usuario o contraseña incorrectos." });
